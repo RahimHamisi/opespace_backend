@@ -1,0 +1,98 @@
+[
+    {
+      "id": 1,
+      "code": "2000",
+      "status": true,
+      "message": "Login successful. Welcome back!"
+    },
+    {
+      "id": 2,
+      "code": "2001",
+      "status": false,
+      "message": "Invalid credentials. Please check your username or  password."
+    },
+    {
+      "id": 3,
+      "code": "2003",
+      "status": false,
+      "message": "Session expired. Please log in again."
+    },
+    {
+      "id": 4,
+      "code": "2005",
+      "status": true,
+      "message": "Password reset successful. You can now log in with your new password."
+    },
+    {
+      "id": 5,
+      "code": "2006",
+      "status": true,
+      "message": "User Created Successfull,please Login "
+    },
+    {
+      "id": 6,
+      "code": "2007",
+      "status": true,
+      "message": "Email verification successful. Your account is now active."
+    },
+    {
+      "id": 7,
+      "code": "2008",
+      "status": true,
+      "message": "Logout successful. Have a nice day!"
+    }, 
+     {
+        "id": 8,
+        "code": "2009",
+        "status": false,
+        "message": "Username already Exist"
+      }, 
+       {
+        "id": 9,
+        "code": "2010",
+        "status": false,
+        "message": "Email Already EXist"
+      }, 
+       {
+        "id": 10,
+        "code": "2011",
+        "status": true,
+        "message": "logout successful. Have a nice day!"
+      }, {
+        "id": 11,
+        "code": "2012",
+        "status": true,
+        "message": "openspace  created successfull"
+      }, {
+        "id": 12,
+        "code": "2013",
+        "status": true,
+        "message": "openspace updated successfull"
+      }, {
+        "id": 13,
+        "code": "2014",
+        "status": true,
+        "message": "open space deleted successfull"
+      }, {
+        "id": 14,
+        "code": "2015",
+        "status": false,
+        "message": "open space not Found!"
+      }, {
+        "id": 15,
+        "code": "2016",
+        "status": true,
+        "message": ""
+      }, {
+        "id": 16,
+        "code": "2017",
+        "status": true,
+        "message": ""
+      }, {
+        "id": 17,
+        "code": "2018",
+        "status": true,
+        "message": ""
+      }
+  
+  ]
