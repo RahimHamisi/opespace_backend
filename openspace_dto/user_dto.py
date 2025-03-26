@@ -12,6 +12,7 @@ class UserInputObject(graphene.InputObjectType):
     password=graphene.String(required=True)
     first_name=graphene.String()
     last_name=graphene.String()
+    user_type=graphene.String()
 
 class UserOutputObject(graphene.ObjectType):
     id=graphene.String()
@@ -23,6 +24,7 @@ class UserOutputObject(graphene.ObjectType):
     is_verified=graphene.Boolean()
     is_active=graphene.Boolean()
     is_staff=graphene.Boolean()
+    user_type=graphene.String()
 
 class TokenOutputObject(graphene.ObjectType):
     access_token=graphene.String()

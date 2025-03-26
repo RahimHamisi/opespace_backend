@@ -1,18 +1,15 @@
-import secrets
-import string
+
 import uuid
 from django.conf import settings
 from django.contrib.gis.db.models import PointField
 from django.db import models
+from utils.randomized_id import generate_reference_id
 
 
-def generate_reference_id():
-    characters = string.ascii_letters + string.digits 
-    return ''.join(secrets.choice(characters) for _ in range(8))
 
 # Create your models here.
 class OpenSpace(models.Model):
-    id=models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
+    openspace_id=models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
     name=models.CharField(max_length=50,blank=False,null=False)
     latitude = models.FloatField(blank=True, null=True)
     longtude = models.FloatField(blank=True, null=True)
@@ -52,14 +49,15 @@ class Report(models.Model):
     report_id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
     reference_id=models.CharField(max_length=8,editable=False,default=generate_reference_id,unique=True)
     open_space=models.ForeignKey(OpenSpace,on_delete=models.CASCADE,related_name='open_space')
-    reported_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.SET_NULL,null = True,blank = True,related_name = 'user_reports') 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.SET_NULL,null = True,blank = True,related_name = 'user_reports') 
     description = models.TextField() 
     category = models.CharField(max_length = 50,choices = CATEGORY_CHOICES) 
     date_reported = models.DateTimeField(auto_now_add = True) 
-    status = models.CharField(max_length = 20,choices = STATUS_CHOICES,default = 'pending')#
+    status = models.CharField(max_length = 20,choices = STATUS_CHOICES,default = 'pending')
     assigned_to = models.CharField(max_length = 100,blank = True,null = True) 
     resolution_date = models.DateField(blank = True, null = True) 
     is_active=models.BooleanField(default=True)
+
 
 
     def __str__(self): 

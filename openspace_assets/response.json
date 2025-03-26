@@ -82,17 +82,17 @@
         "id": 15,
         "code": "2016",
         "status": true,
-        "message": ""
+        "message": "Your Report Submitted successfull"
       }, {
         "id": 16,
         "code": "2017",
-        "status": true,
-        "message": ""
+        "status": false,
+        "message": "Error Sending Report!Please Choose whether you send report as 'anonymous' or 'registered' user "
       }, {
         "id": 17,
         "code": "2018",
-        "status": true,
-        "message": ""
+        "status": false,
+        "message": "Operation Failed!You must login to continue with the process"
       }
   
   ]

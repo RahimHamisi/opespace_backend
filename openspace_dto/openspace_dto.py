@@ -1,5 +1,8 @@
 import graphene
 
+from openspace_dto.response_dto import ResponseObjects
+from openspace_dto.user_dto import UserOutputObject
+
 
 
 class OpenSpaceInput(graphene.InputObjectType):
@@ -20,7 +23,7 @@ class OpenSpaceInput(graphene.InputObjectType):
     is_active = graphene.Boolean(required=False)
 
 class OpenSpaceObject(graphene.ObjectType):
-    id=graphene.String()
+    openspace_id=graphene.String()
     name = graphene.String()
     latitude = graphene.Float()
     longtude = graphene.Float()
@@ -37,4 +40,15 @@ class OpenSpaceObject(graphene.ObjectType):
     contact_info = graphene.String()
     is_active = graphene.Boolean()
 
-        
+class ReportInput(graphene.InputObjectType):
+    openspace_id=graphene.String(required=True)
+    description=graphene.String(required=True)
+    category=graphene.String(required=True)
+    user_type=graphene.String(required=True)     
+
+
+class ReportResponseOutput(graphene.ObjectType):
+    reference_id=graphene.String()
+    message=graphene.String()
+    response=graphene.Field(ResponseObjects)
+    user=graphene.Field(UserOutputObject)

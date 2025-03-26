@@ -1,12 +1,13 @@
 import graphene
 
+from report.schema import OpenSpaceQuery
 from report.views import OpenSpaceMutation
 from user_auth.schema import UserQuery
 from user_auth.views import UserMutation 
 
 
 
-class Query(UserQuery,graphene.ObjectType):
+class Query(OpenSpaceQuery,UserQuery,graphene.ObjectType):
     pass
 
 
