@@ -52,3 +52,30 @@ class ReportResponseOutput(graphene.ObjectType):
     message=graphene.String()
     response=graphene.Field(ResponseObjects)
     user=graphene.Field(UserOutputObject)
+
+
+class ReportVerificationOutput(graphene.ObjectType):
+    content_to_verify = graphene.String()
+    description = graphene.String()
+    category = graphene.String()
+    openspace_id = graphene.UUID()
+    temporary_id = graphene.UUID()
+
+class ReportActionEnum(graphene.Enum):
+    SUBMIT = "submit"
+    EDIT = "edit"
+    CANCEL = "cancel"
+
+class ReportStatusEnum(graphene.Enum):
+    PENDING = "pending"
+    IN_PROGRESS = "in_progress"
+    RESOLVED = "resolved"
+
+    @property
+    def description(self):
+        descriptions = {
+            "pending": "Report submitted, awaiting review",
+            "in_progress": "Report is being worked on",
+            "resolved": "Report has been addressed"
+        }
+        return descriptions[self.value]

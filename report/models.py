@@ -43,7 +43,7 @@ class Report(models.Model):
 
     STATUS_CHOICES = [
         ('pending', 'Pending'),
-        ('under_investigation', 'Under Investigation'),
+        ('in_progress', 'I PROGRESS'),
         ('resolved', 'Resolved'),
     ]
     report_id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)

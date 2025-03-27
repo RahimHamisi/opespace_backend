@@ -87,12 +87,12 @@
         "id": 16,
         "code": "2017",
         "status": false,
-        "message": "Error Sending Report!Please Choose whether you send report as 'anonymous' or 'registered' user "
+        "message": "Error Sending Report(Invalid User Type)!Please Choose whether you send report as 'anonymous' or 'registered' user "
       }, {
         "id": 17,
         "code": "2018",
         "status": false,
-        "message": "Operation Failed!You must login to continue with the process"
+        "message": "Operation Failed(UnAuthorized access)!You must login to continue with the process"
       }
   
   ]
