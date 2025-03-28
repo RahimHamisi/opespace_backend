@@ -78,21 +78,43 @@
         "code": "2015",
         "status": false,
         "message": "open space not Found!"
-      }, {
+      }, 
+      {
         "id": 15,
         "code": "2016",
         "status": true,
         "message": "Your Report Submitted successfull"
-      }, {
+      }, 
+      {
         "id": 16,
         "code": "2017",
         "status": false,
         "message": "Error Sending Report(Invalid User Type)!Please Choose whether you send report as 'anonymous' or 'registered' user "
-      }, {
+      },
+       {
         "id": 17,
         "code": "2018",
         "status": false,
         "message": "Operation Failed(UnAuthorized access)!You must login to continue with the process"
+      },
+        {
+        "id": 18,
+        "code": "2019",
+        "status": false,
+        "message": "No Report Found with that reference_id"
+      },
+      {
+        "id": 19,
+        "code":2020,
+        "status":false,
+        "message": "No Reportrd Issue For THis OPen Space"
+      },
+      {
+        "id":20,
+        "code":2021,
+        "status":false,
+        "message":"Report Cancelled(Report was cancelled)!Feel Free to do the process again  "
+
       }
   
   ]

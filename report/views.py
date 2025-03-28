@@ -1,3 +1,4 @@
+import uuid
 from django.shortcuts import render
 import graphene
 import utm
@@ -127,10 +128,18 @@ class CreateReport(graphene.Mutation):
                     )
                 else:
                     response=ResponseObjects.get_response(id=17)
-                    return response
+                    output=ReportResponseOutput(
+                        response=response,
+                        message=None,
+                        user=None,
+                        reference_id=None
+                    )
+                  
+                    return CreateReport(output=output)
+                
             elif input.user_type =="anonymous":
                 user_output = UserOutputObject(
-                        id=None,
+                        id=user.id,
                         username=None,
                         phone_number=None,
                         email=None,
@@ -143,10 +152,17 @@ class CreateReport(graphene.Mutation):
                 )
             else:
                 response=ResponseObjects.get_response(id=16)
-                return response
+                output=ReportResponseOutput(
+                    response=response,
+                    message=None,
+                    reference_id=None,
+                    user=None
+
+                )
+                return CreateReport(output=output)
             
             if action == "submit" and not temporary_id:  
-                temp_id = graphene.UUID.uuid4()
+                temp_id = uuid.uuid4()
                 return CreateReport(
                     verification=ReportVerificationOutput(
                         content_to_verify=f"Category: {input.category}, Description: {input.description}",
@@ -184,18 +200,18 @@ class CreateReport(graphene.Mutation):
                         temporary_id=temporary_id
                     )
                 )
-            elif action == "cancel" and temporary_id:  # Cancel submission
-                response = ResponseObjects.get_response(id=18)  # Assuming cancel response
+            elif action == "cancel" and temporary_id: 
+                response = ResponseObjects.get_response(id=20) 
                 output = ReportResponseOutput(
                     response=response,
-                    message="Report submission cancelled",
+                    message=None,
                     reference_id=None,
-                    user=user_output
+                    user=None
                 )
                 return CreateReport(output=output)
 
             else:
-                raise Exception("Invalid action or missing temporary_id")
+                return None
             
         except OpenSpace.DoesNotExist:
             raise Exception("Error: Open space not found.")

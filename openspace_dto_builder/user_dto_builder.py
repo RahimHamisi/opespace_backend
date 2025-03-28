@@ -24,7 +24,7 @@ class UserBuilder:
             )
         return data
     def  get_users():
-        users=User.objects.filter(is_active=True)
+        users=User.objects.filter(is_active=True).order_by('-date_joined')
         all_users=[]
         for user in users:
            user_data=UserOutputObject(
@@ -36,8 +36,7 @@ class UserBuilder:
               is_active=user.is_active,
               is_staff=user.is_staff,
               is_verified=user.is_verified
-
-           )
+            )
            all_users.append(user_data)
         return all_users
            

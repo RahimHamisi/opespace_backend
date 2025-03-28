@@ -39,6 +39,7 @@ class OpenSpaceObject(graphene.ObjectType):
     managed_by = graphene.String()
     contact_info = graphene.String()
     is_active = graphene.Boolean()
+    status=graphene.String()
 
 class ReportInput(graphene.InputObjectType):
     openspace_id=graphene.String(required=True)
@@ -63,19 +64,49 @@ class ReportVerificationOutput(graphene.ObjectType):
 
 class ReportActionEnum(graphene.Enum):
     SUBMIT = "submit"
-    EDIT = "edit"
-    CANCEL = "cancel"
+    EDIT = "edit"       #This is  dto used for handling action when creating report shortly when sending reports
+    CANCEL = "cancel"           
 
-class ReportStatusEnum(graphene.Enum):
-    PENDING = "pending"
-    IN_PROGRESS = "in_progress"
-    RESOLVED = "resolved"
+    
+class ReportOutput(graphene.ObjectType):
+    report_id = graphene.String()
+    reference_id = graphene.String()
+    open_space = graphene.Field(OpenSpaceObject)
+    user = graphene.Field(UserOutputObject)
+    description = graphene.String()             #This is general dto for returning all details of reports based in model deinition 
+    category = graphene.String()
+    date_reported = graphene.DateTime()
+    status =graphene.String()
+    assigned_to = graphene.String()
+    resolution_date = graphene.Date()
+    is_active = graphene.Boolean()
 
-    @property
-    def description(self):
-        descriptions = {
-            "pending": "Report submitted, awaiting review",
-            "in_progress": "Report is being worked on",
-            "resolved": "Report has been addressed"
-        }
-        return descriptions[self.value]
+class ReportObject(graphene.ObjectType):
+    report_id = graphene.String()
+    reference_id = graphene.String()
+    user = graphene.Field(UserOutputObject)    #This is dto for returning details of reports with no open spaces
+    description = graphene.String()
+    category = graphene.String()
+    date_reported = graphene.DateTime()
+    status =graphene.String()
+    assigned_to = graphene.String()
+    resolution_date = graphene.Date()
+    is_active = graphene.Boolean()
+
+
+class OpenSpaceReports(graphene.ObjectType):
+    open_space = graphene.Field(OpenSpaceObject)  #This dtoo is used to handle returning of list of reports for a given open spaces
+    reports = graphene.List(ReportObject)
+
+
+class TrackProgressOutput(graphene.ObjectType):
+    report_id = graphene.String()
+    reference_id = graphene.String()
+    open_space = graphene.Field(OpenSpaceObject)    #This is dto for returning details of reports with no user
+    description = graphene.String()
+    category = graphene.String()
+    date_reported = graphene.DateTime()
+    status =graphene.String()
+    assigned_to = graphene.String()
+    resolution_date = graphene.Date()
+    is_active = graphene.Boolean()

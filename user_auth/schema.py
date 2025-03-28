@@ -7,7 +7,7 @@ from openspace_dto_builder.user_dto_builder import UserBuilder
 
 class UserQuery(graphene.ObjectType):
     all_users=graphene.List(UserOutputObject)
-    user=graphene.Field(UserOutputObject,id=graphene.UUID(required=True))
+    user_details=graphene.Field(UserOutputObject,id=graphene.UUID(required=True))
 
 
 
@@ -16,5 +16,5 @@ class UserQuery(graphene.ObjectType):
         return UserBuilder.get_users()
     
     @staticmethod
-    def resolve_user(self,info,id):
+    def resolve_user_details(self,info,id):
         return UserBuilder.get_user_data(id=id)

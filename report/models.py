@@ -28,7 +28,7 @@ class OpenSpace(models.Model):
 
 
     def __str__(self):
-        return f" self.name "
+        return f" {self.name} "
 
 
 
@@ -43,7 +43,7 @@ class Report(models.Model):
 
     STATUS_CHOICES = [
         ('pending', 'Pending'),
-        ('in_progress', 'I PROGRESS'),
+        ('in_progress', 'IN PROGRESS'),
         ('resolved', 'Resolved'),
     ]
     report_id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
